@@ -1,0 +1,24 @@
+﻿<Window x:Class="paint.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:paint"
+        mc:Ignorable="d"
+        Title="Paint" Height="530" Width="1030">
+
+    <DockPanel LastChildFill="True">
+        <StackPanel Background="Lavender" x:Name="buttons" Width="200">
+            <TextBox TextWrapping="Wrap" Text="99999" Name="shapes" Margin="15"/>
+            <TextBox TextWrapping="Wrap" Text="15"  Name="algorythm" Margin="15"/>
+            <Button Content="Generate" Margin="15" Click="Generate_Button_Click"/>
+            <Button Content="First Iteration" Margin="15" Click="Algorythm_Button_Click"/>
+            <Button Content="Algoritm" Margin="15" Click="Button_Click"/>
+            
+
+        </StackPanel>
+        <Grid x:Name="grid">
+            <Image Name="image" Height="450" Width="800" />
+        </Grid>
+    </DockPanel>
+</Window>
