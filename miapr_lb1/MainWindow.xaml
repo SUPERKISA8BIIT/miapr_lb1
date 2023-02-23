@@ -9,11 +9,9 @@
 
     <DockPanel LastChildFill="True">
         <StackPanel Background="Lavender" x:Name="buttons" Width="200">
-            <TextBox TextWrapping="Wrap" Text="99999" Name="shapes" Margin="15"/>
-            <TextBox TextWrapping="Wrap" Text="15"  Name="algorythm" Margin="15"/>
+            <TextBox TextWrapping="Wrap" Text="55555"  Name="algorythm" Margin="15"/>
             <Button Content="Generate" Margin="15" Click="Generate_Button_Click"/>
-            <Button Content="First Iteration" Margin="15" Click="Algorythm_Button_Click"/>
-            <Button Content="Algoritm" Margin="15" Click="Button_Click"/>
+            <Button Content="Algorytm" Margin="15" Click="Button_Click"/>
             
 
         </StackPanel>

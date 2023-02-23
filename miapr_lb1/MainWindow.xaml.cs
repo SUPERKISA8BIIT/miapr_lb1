@@ -51,18 +51,51 @@ namespace paint
                 _bitmap.AddPixel(PixelColors.Pink, x, y + 1);
                 _bitmap.AddPixel(PixelColors.Pink, x + 1, y + 1);
 
+
+
                 pixels.Add(new Point(x, y));
             }
 
-            for (int i = 0; i < ancers.Capacity; i++)
-            {
-                int x = rnd.Next(0, 799);
-                int y = rnd.Next(0, 449);
-                ancers.Add(new Point(x, y));
-                _bitmap.AddRect(PixelColors.Empty[i], x, y, 4);
-                classifiedPoints[i] = new List<Point>();
-            }
+            _bitmap.AddRect(PixelColors.Hui, (int)pixels[0].X, (int)pixels[0].Y, 4);
+            ancers = new List<Point>();
+            ancers.Add(pixels[0]);
+            classifiedPoints[0] = new List<Point>();
+            classifiedPoints[1] = new List<Point>();
+           
+                var distances = pixels.Select(x => DistanceBeetweenPoints(pixels[0], x)).ToList();
+                int idOfMaxDistance = distances.IndexOf(distances.Max());
+            ancers.Add(pixels[idOfMaxDistance]);
+       
+           
         }
+        private void MaxMin()
+        {
+            var ll = new List<double>();
+            classifiedPoints.Clear();
+         foreach (var pixel in pixels)
+                {
+                var distanceFromPixelToAncer = new List<double>();
+                foreach (var ancer in ancers)
+                {
+                  
+                    distanceFromPixelToAncer.Add(DistanceBeetweenPoints(pixel, ancer));
+               
+
+            }
+                var maxDist = distanceFromPixelToAncer.Max();
+                var id = distanceFromPixelToAncer.IndexOf(maxDist);
+                if (!classifiedPoints.ContainsKey(id))
+                {
+                    classifiedPoints[id] = new List<Point>();
+                }
+                classifiedPoints[id].Add(pixel);
+               
+
+            }
+
+
+        }
+
 
         private void KMeans()
         {
@@ -86,8 +119,8 @@ namespace paint
 
         private void ClearAll()
         {
-            pixels = new List<Point>(int.Parse(shapes.Text));
-            ancers = new List<Point>(int.Parse(algorythm.Text));
+            pixels = new List<Point>(int.Parse(algorythm.Text));
+
             classifiedPoints = new Dictionary<int, List<Point>>();
 
             _bitmap = new WriteableBitmap((int)image.Width, (int)image.Height, 96, 96, PixelFormats.Bgr32, null);
@@ -110,6 +143,14 @@ namespace paint
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+           
+
+
+
+
+
+
+
             List<Point> prevAncers;
             do
             {
